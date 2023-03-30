@@ -642,6 +642,29 @@ global type love = record
 		type Image = record
 			isCompressed: function(self: Image): boolean
 			replacePixels: function(self: Image, data: image.ImageData, slice: number, mipmap: number, x: number, y: number, reloadmipmaps: boolean)
+			-- Copied from Texture
+			getDPIScale: function(self: Image): number
+			getDepth: function(self: Image): number
+			getDepthSampleMode: function(self: Image): CompareMode
+			getDimensions: function(self: Image): number, number
+			getFilter: function(self: Image): FilterMode, FilterMode, number
+			getFormat: function(self: Image): image.PixelFormat
+			getHeight: function(self: Image): number
+			getLayerCount: function(self: Image): number
+			getMipmapCount: function(self: Image): number
+			getMipmapFilter: function(self: Image): FilterMode, number
+			getPixelDimensions: function(self: Image): number, number
+			getPixelHeight: function(self: Image): number
+			getPixelWidth: function(self: Image): number
+			getTextureType: function(self: Image): TextureType
+			getWidth: function(self: Image): number
+			getWrap: function(self: Image): WrapMode, WrapMode, WrapMode
+			isReadable: function(self: Image): boolean
+			setDepthSampleMode: function(self: Image, compare: CompareMode)
+			setFilter: function(self: Image, min: FilterMode, mag: FilterMode, anisotropy: number)
+			setMipmapFilter: function(self: Image, filtermode: FilterMode, sharpness: number)
+			setMipmapFilter: function(self: Image)
+			setWrap: function(self: Image, horiz: WrapMode, vert: WrapMode, depth: WrapMode)
 		end
 
 		type Mesh = record
@@ -913,6 +936,7 @@ global type love = record
 		discard: function(discardcolor: boolean, discardstencil: boolean)
 		discard: function(discardcolors: {boolean}, discardstencil: boolean)
 		draw: function(drawable: Drawable, x: number, y: number, r: number, sx: number, sy: number, ox: number, oy: number, kx: number, ky: number)
+		draw: function(drawable: Image, x: number, y: number, r: number, sx: number, sy: number, ox: number, oy: number, kx: number, ky: number)
 		draw: function(texture: Texture, quad: Quad, x: number, y: number, r: number, sx: number, sy: number, ox: number, oy: number, kx: number, ky: number)
 		draw: function(drawable: Drawable, transform: math.Transform)
 		draw: function(texture: Texture, quad: Quad, transform: math.Transform)
